@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 class="text-uppercase text-center text-secondary mb-0">Contactame</h2>
+  <hr class="star-dark mb-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <form id="contactForm" name="sentMessage" novalidate="novalidate">
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls mb-0 pb-2"><label>Nombre</label><input
+              class="form-control" type="text" id="nombre" required="" placeholder="Nombre" name="Nombre"><small
+              class="form-text text-danger help-block"></small></div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls mb-0 pb-2"><label>Correo</label><input
+              class="form-control" type="email" id="correo" required="" placeholder="Correo" name="Correo"><small
+              class="form-text text-danger help-block"></small></div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls mb-0 pb-2"><label>Teléfino</label><input
+              class="form-control" type="tel" id="telefono" required="" placeholder="Teléfono" name="Telefono"><small
+              class="form-text text-danger help-block"></small></div>
+        </div>
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls mb-5 pb-2"><textarea class="form-control"
+              id="mensaje" required="" placeholder="Mensaje" rows="5" name="Mensaje"></textarea><small
+              class="form-text text-danger help-block"></small></div>
+        </div>
+        <div id="success"></div>
+        <div><button class="btn btn-primary btn-xl" id="sendMessageButton"
+            type="button" (click)="mensaje()">Enviar</button></div>
+      </form>
+    </div>
+  </div>
+</div>
