@@ -27,7 +27,7 @@ def funcionInstalar():
 	result=c.run("sudo apt update")
 	result=c.run("sudo apt-cache policy docker-ce")
 	result=c.run("sudo apt install docker-ce --yes")	
-	result=c.run("docker version --format '{{.Server.Version}}'")
+	result=c.run("docker --version")
 	print("Instalo Docker-compose")
 	result=c.run("sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose")
 	result=c.run("sudo chmod +x /usr/local/bin/docker-compose")
