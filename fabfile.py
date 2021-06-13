@@ -34,19 +34,19 @@ def funcionInstalar():
 	result=c.run("docker-compose --version")
 	
 def funcionFront():
-	connect_kwargs = {"key_filename":['.ssh/servidor-deploy.pub']}
+	connect_kwargs = {"key_filename":['servidor-deploy.pub']}
 	print("Realizo la conexion a la maquina de despliegue para el back")
 	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
 	print("Muevo la carpeta del back y la levanto")
-	result = c.put('/home/jeann/SA_Practica2_201602434/Back')
+	result = c.put('./Back')
 	result=c.run("cd /Back")
 	result=c.run("node index.js")
 	
 def funcionBack():
-	connect_kwargs = {"key_filename":['.ssh/servidor-deploy.pub']}
+	connect_kwargs = {"key_filename":['servidor-deploy.pub']}
 	print("Realizo la conexion a la maquina de despliegue para el front")
 	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
 	print("Muevo la carpeta del front y la levanto")
-	result = c.put('/home/jeann/SA_Practica2_201602434/Front')
+	result = c.put('./Front')
 	result=c.run("cd /Front")
 	result=c.run("npm start")
