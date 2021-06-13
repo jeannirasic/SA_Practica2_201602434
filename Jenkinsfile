@@ -11,13 +11,13 @@ node {
 			npm run build --prod
 		'''
 	}
-	
+
 	stage('Correr archivos fabric') {
 		sh '''
 			cd /home/jeann/
-			fab funcionInstalar
-			fab funcionFront
-			fab funcionBack
+			sudo fab funcionInstalar
+			sudo fab funcionFront
+			sudo fab funcionBack
 		'''
 	}
 }
