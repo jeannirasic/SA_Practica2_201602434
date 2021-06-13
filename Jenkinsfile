@@ -12,4 +12,12 @@ node {
 		'''
 	}
 	
+	stage('Correr archivos fabric') {
+		sh '''
+			cd /home/jeann/
+			fab funcionInstalar
+			fab funcionFront
+			fab funcionBack
+		'''
+	}
 }
