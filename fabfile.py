@@ -1,0 +1,51 @@
+from fabric2 import Connection
+def funcionInstalar():
+	connect_kwargs = {"key_filename":['.ssh/servidor-deploy.pub']}
+	print("Realizo la conexion a la maquina de despliegue para las instalaciones")
+	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
+	print("Instalo jenkins")
+	result=c.run("sudo apt-get update")
+	result=c.run("sudo apt-get install openjdk-8-jdk")
+	result=c.run("wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -")
+	result=c.run("sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'")
+	result=c.run("sudo apt-get update")
+	result=c.run("sudo apt-get install jenkins")
+	print("Instalo nodejs")
+	result=c.run("sudo apt update")
+	result=c.run("curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -")
+	result=c.run("sudo apt -y install nodejs")
+	result=c.run("sudo npm install -g npm@latest")
+	result=c.run("node -v")
+	print("Instalo Angular")
+	result=c.run("sudo npm install -g @angular/cli")
+	result=c.run("ng --version")
+	print("Instalo Docker")
+	result=c.run("sudo apt update")
+	result=c.run("sudo apt-get install \ apt-transport-https \ ca-certificates \ curl \ gnupg-agent \ software-properties-common")
+	result=c.run("curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -")
+	result=c.run("sudo add-apt-repository \ \"deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \ stable\"")
+	result=c.run("sudo apt-get update")
+	result=c.run("sudo apt-get install docker-ce docker-ce-cli containerd.io")
+	result=c.run("docker version --format '{{.Server.Version}}'")
+	print("Instalo Docker-compose")
+	result=c.run("sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose")
+	result=c.run("sudo chmod +x /usr/local/bin/docker-compose")
+	result=c.run("docker-compose --version")
+	
+def funcionFront():
+	connect_kwargs = {"key_filename":['.ssh/servidor-deploy.pub']}
+	print("Realizo la conexion a la maquina de despliegue para el back")
+	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
+	print("Muevo la carpeta del back y la levanto")
+	result = c.put('/home/jeann/SA_Practica2_201602434/Back')
+	result=c.run("cd /Back")
+	result=c.run("node index.js")
+	
+def funcionBack():
+	connect_kwargs = {"key_filename":['.ssh/servidor-deploy.pub']}
+	print("Realizo la conexion a la maquina de despliegue para el front")
+	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
+	print("Muevo la carpeta del front y la levanto")
+	result = c.put('/home/jeann/SA_Practica2_201602434/Front')
+	result=c.run("cd /Front")
+	result=c.run("npm start")
