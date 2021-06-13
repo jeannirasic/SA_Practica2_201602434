@@ -21,7 +21,7 @@ def funcionInstalar():
 	result=c.run("ng --version")
 	print("Instalo Docker")
 	result=c.run("sudo apt update")
-	result=c.run("sudo apt install apt-transport-https ca-certificates curl software-properties-common")
+	result=c.run("sudo apt install apt-transport-https ca-certificates curl software-properties-common --yes")
 	result=c.run("curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -")
 	result=c.run("sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable\"")
 	result=c.run("sudo apt update")
