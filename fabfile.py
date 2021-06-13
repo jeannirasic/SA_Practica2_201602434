@@ -38,7 +38,7 @@ def funcionFront():
 	print("Realizo la conexion a la maquina de despliegue para el back")
 	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
 	print("Muevo la carpeta del back y la levanto")
-	result = c.put('Back', '/home/jeann')
+	result = c.put('./Back', '/home/jeann')
 	result=c.run("cd /Back")
 	result=c.run("node index.js")
 	
@@ -47,6 +47,6 @@ def funcionBack():
 	print("Realizo la conexion a la maquina de despliegue para el front")
 	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
 	print("Muevo la carpeta del front y la levanto")
-	result = c.put('Front', '/home/jeann')
+	result = c.put('./Front', '/home/jeann')
 	result=c.run("cd /Front")
 	result=c.run("npm start")
