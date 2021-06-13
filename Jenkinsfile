@@ -11,7 +11,6 @@ node {
 			npm run build --prod
 		'''
 	}
-
 	stage('Correr archivos fabric') {
 		sh '''
 			cd /home/jeann/
