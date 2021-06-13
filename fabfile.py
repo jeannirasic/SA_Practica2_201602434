@@ -5,7 +5,7 @@ def funcionInstalar():
 	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
 	print("Instalo jenkins")
 	result=c.run("sudo apt-get update")
-	result=c.run("sudo apt-get install openjdk-8-jdk")
+	result=c.run("sudo apt-get install openjdk-8-jdk --yes")
 	result=c.run("wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -")
 	result=c.run("sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'")
 	result=c.run("sudo apt-get update")
