@@ -26,7 +26,7 @@ def funcionInstalar():
 	result=c.run("sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable\"")
 	result=c.run("sudo apt update")
 	result=c.run("sudo apt-cache policy docker-ce")
-	result=c.run("sudo apt install docker-ce")	
+	result=c.run("sudo apt install docker-ce --yes")	
 	result=c.run("docker version --format '{{.Server.Version}}'")
 	print("Instalo Docker-compose")
 	result=c.run("sudo curl -L \"https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose")
