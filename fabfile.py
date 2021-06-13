@@ -1,6 +1,6 @@
 from fabric2 import Connection
 def funcionInstalar():
-	connect_kwargs = {"key_filename":['.ssh/servidor-deploy.pub']}
+	connect_kwargs = {"key_filename":['servidor-deploy.pub']}
 	print("Realizo la conexion a la maquina de despliegue para las instalaciones")
 	c = Connection(host='34.72.129.249',user="jeann",connect_kwargs=connect_kwargs)
 	print("Instalo jenkins")
