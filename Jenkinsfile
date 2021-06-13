@@ -15,9 +15,10 @@ node {
 	stage('Correr archivos fabric') {
 		sh '''
 			cd /home/jeann/
-			sudo fab funcionInstalar
-			sudo fab funcionFront
-			sudo fab funcionBack
+			sudo su
+			fab funcionInstalar
+			fab funcionFront
+			fab funcionBack
 		'''
 	}
 }
