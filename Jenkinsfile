@@ -5,6 +5,7 @@ node {
 
 	stage('Build test') {
 		sh '''
+			cd Front/
 			npm install
 			npm run test --watch=false
 			npm run build --prod
